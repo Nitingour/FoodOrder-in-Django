@@ -1,0 +1,13 @@
+
+{% extends 'BlogApp/base.html'%}
+{% load crispy_forms_tags %}
+{% block  parentblock  %}
+<div class="container" align='center'>
+  {{msg}}
+<form method="post">
+     {{sform|crispy}}
+     {%csrf_token%}
+     <input type="submit" value="Register" class='btn btn-submit' />
+    </form>
+  </div>
+  {%endblock%}

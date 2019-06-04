@@ -1,0 +1,50 @@
+
+
+{% extends 'CBVIApp/base.html'%}
+{%load staticfiles%}
+{% block  parentblock  %}
+
+<div class="container">
+<h1>Products:</h1>
+<center><h3>{{msg}}</h3></center><br/>
+
+  <div class="row">
+
+    {% for prod in product_list %}
+        <div class="card mb-3 box-shadow">
+          <div class="col-md-3">
+          <a href="details/{{i.id}}"><img class="card-img-top" height="150" src="{{prod.image.url}}" alt="Card image cap"></a>
+          <div class="card-body">
+            <p class="card-text">{{prod.pname}}</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="btn-group">
+                <form action='/addcart' method='post'>
+                  Quantity<input type='number' name='quantity' style="width: 3em" value='1' min='1'/>
+                  <input type='hidden' name='pid'  value="{{prod.id}}"/>
+                  <input type='hidden' name='price'  value="{{prod.price}}"/>
+                  <input type='hidden' name='image'  value="{{prod.image.url}}"/>
+                  {%csrf_token%}
+                <input type="submit" class="btn btn btn-outline-secondary btn-sm" value="Add to Cart" />&nbsp&nbsp
+                </form>
+               </div>
+              <h5 class="text-muted"><i class="fa fa-rupee">{{prod.price}}</i></h5>
+            </div>
+          </div>
+        </div>
+      </div>
+      {%endfor%}
+    </div>
+  </div>
+
+
+<!--<div class="container" align='center'>
+<h1>Welcome to Blog</h1><br/>
+<center>
+<h1>Product List</h1> <a href="create">Add New Product</a><hr/>
+{% for prod in product_list %}
+<h2><a href='detail/{{prod.id}}'><img src="{{prod.image.url}}" /><br/>{{prod.pname}}</a></h2>
+{%endfor%}
+</center>
+
+</div>-->
+{%endblock%}

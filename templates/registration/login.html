@@ -1,0 +1,15 @@
+
+
+{% extends 'CBVIApp/base.html'%}
+{%load staticfiles%}
+{% block  parentblock  %}
+
+<div class="container" align='center'>
+<h1>Login Form</h1>
+<form method='post'>
+{{form.as_p}}
+{%csrf_token%}
+<input type='submit' value='Login' />
+</form>
+</div>
+{%endblock%}

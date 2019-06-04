@@ -1,0 +1,19 @@
+
+
+{% extends 'CBVIApp/base.html'%}
+{%load staticfiles%}
+{% block  parentblock  %}
+<div class="container">
+<h1>Cart:</h1>
+<center><h3>{{msg}}</h3></center><br/>
+{%if products%}
+<table class='table table-hover'>
+  <tr><th>ProductID</th><th>Image</th><th>Price</th><th>Quantity</th><th>Total</th><th>User</th></tr>
+{%for pro in carts %}
+ <tr><td>{{pro.pid}}</td><td><img src='{{pro.image}}' height='80' width='100' /></td><td>{{pro.price}}</td><td>{{pro.quantity}}</td><td>{{ pro.total}}</td><td>{{pro.user}}</td></tr>
+{%endfor%}
+<h2>Grand Total={{gtotal}}</h2>
+{%else %}
+<h2>Cart is Empty</h2>
+{%endif%}
+{%endblock%}
